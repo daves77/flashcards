@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import middleware from "./utils/middleware.js";
 import homeRouter from "./controllers/home.js";
 import userRouter from "./controllers/users.js";
+import cardsRouter from "./controllers/card.js";
 
 dotenv.config();
 const app = express();
@@ -20,5 +21,6 @@ app.use(middleware.logger);
 
 app.use("/", homeRouter);
 app.use("/", userRouter);
+app.use("/cards", cardsRouter);
 
 app.listen(PORT, () => console.log(`listening at port ${PORT}`));

@@ -6,12 +6,13 @@
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "run": "nodemon index.js",
-        "build:css": "postcss public/styles/tailwind.css -0 public/styles/styles.css"
+        "dev": "nodemon index.js",
+        "build:css": "postcss public/styles/tailwind.css -o public/styles/styles.css"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@tailwindcss/typography": "^0.4.1",
         "bcrypt": "^5.0.1",
         "commonmark": "^0.30.0",
         "cookie-parser": "^1.4.5",
@@ -20,6 +21,9 @@
         "express": "^4.17.1",
         "express-session": "^1.17.2",
         "marked": "^4.0.3",
-        "method-override": "^3.0.0"
+        "method-override": "^3.0.0",
+        "multer": "^1.4.3",
+        "pg": "^8.7.1",
+        "tailwindcss": "^2.2.19"
     }
 }
