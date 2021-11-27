@@ -1,14 +1,15 @@
 const ImageTool = window.ImageTool;
 
-const editor = new EditorJS({
+export const editor = new EditorJS({
     holder: "editorjs",
+    placeholder: "New Note",
     tools: {
         header: {
             class: Header,
             config: {
                 placeholder: "Enter a Header",
-                levels: [1, 2, 3, 4, 5, 6],
-                defaultLevel: 1,
+                levels: [2, 3, 4, 5, 6],
+                defaultLevel: 3,
             },
         },
         image: {
@@ -19,5 +20,6 @@ const editor = new EditorJS({
                 },
             },
         },
+        code: CodeTool,
     },
 });

@@ -7,19 +7,26 @@
   <title>Create</title>
   <link rel="stylesheet" href="/styles/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.3.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@2.6.2/dist/bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.6.2/dist/bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@2.7.0/dist/bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="container flex justify-center align-middle min-h-screen">
-    <div class="rounded p-4 shadow-lg min-w-full prose">
-      <div id="editorjs"></div>
+  <div class="container flex justify-center items-center min-h-90 p-8">
+    <div class="rounded p-4 pl-8 shadow-lg w-screen mx-auto prose">
+      <div>
+        <div id="editorjs" class="mx-auto overflow-scroll"></div>
+        <button id="save-btn" class="btn">Save</button>
+      </div>
     </div>
+
+    <pre id="output"></pre>
   </div>
 
-
-  <script src="../js/editor.js"></script>
+  <script type="module" src="../js/my-paragraph.mjs"></script>
+  <script type="module" src="../js/editor.mjs"></script>
+  <script type="module" src="../js/save-handler.js"></script>
 </body>
 
 </html>

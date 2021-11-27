@@ -9,11 +9,12 @@ cardsRouter.get("/create", (req, res) => {
 
 cardsRouter.post("/images", multerUpload.single("image"), (req, res) => {
     console.log(req.file);
-
+    const path = `/uploads/${req.file.filename}`;
+    console.log(path);
     res.send({
         success: 1,
         file: {
-            url: "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg",
+            url: path,
         },
     });
 });
