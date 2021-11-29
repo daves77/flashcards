@@ -7,8 +7,21 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS collections (
   id SERIAL PRIMARY KEY,
   user_id INTEGER,
+  name TEXT,
+  description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS collections_tags (
+  id SERIAL PRIMARY KEY, 
+  collection_id INTEGER,
+  tag_id INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS tags (
+  id SERIAL PRIMARY KEY,
   name TEXT
 );
+
 
 CREATE TABLE IF NOT EXISTS collections_cards (
   id SERIAL PRIMARY KEY,
@@ -18,6 +31,6 @@ CREATE TABLE IF NOT EXISTS collections_cards (
 
 CREATE TABLE IF NOT EXISTS cards (
   id SERIAL PRIMARY KEY,
-  name TEXT,
-  content TEXT
+  front TEXT,
+  back TEXT
 );

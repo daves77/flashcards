@@ -1,10 +1,20 @@
 import { editor } from "./editor.mjs";
 
 const saveButton = document.getElementById("save-btn");
-const output = document.getElementById("output");
+
+const config = {
+    headers: {
+        "Content-Type": "application/json",
+    },
+};
 
 saveButton.addEventListener("click", () => {
     editor.save().then((savedData) => {
-        output.innerHTML = JSON.stringify(savedData, null, 4);
+        console.log(savedData);
+        axios.post(
+            "http://localhost:3001/cards/create",
+            JSON.stringify(savedData.blocks),
+            config
+        );
     });
 });

@@ -13,20 +13,24 @@
 </head>
 
 <body>
-  <div class="container flex justify-center items-center min-h-90 p-8">
-    <div class="rounded p-4 pl-8 shadow-lg w-screen mx-auto prose">
-      <div>
-        <div id="editorjs" class="mx-auto overflow-scroll"></div>
-        <button id="save-btn" class="btn">Save</button>
+  <%- include('../common/navbar', {navbar: "collections" }) %>
+    <main>
+
+      <div class="container flex justify-center items-center min-h-90 p-8">
+        <div class="rounded p-4 pl-8 shadow-lg w-screen mx-auto prose">
+          <div>
+            <div id="editorjs" class="mx-auto"></div>
+            <button id="save-btn" class="btn">Save</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
 
-    <pre id="output"></pre>
-  </div>
 
-  <script type="module" src="../js/my-paragraph.mjs"></script>
-  <script type="module" src="../js/editor.mjs"></script>
-  <script type="module" src="../js/save-handler.js"></script>
+    <%- include('../common/footer') %>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script type="module" src="../js/editor.mjs"></script>
+      <script type="module" src="../js/save-handler.js"></script>
 </body>
 
 </html>

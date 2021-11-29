@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <%- include('../common/navbar') %>
+  <%- include('../common/navbar', {navbar: "login" }) %>
     <div class="max-w-7xl min-h-screen flex justify-center items-center m-auto">
       <div class="w-80">
         <form action="/login" method="POST">

@@ -40,19 +40,28 @@ userRouter.post("/login", (req, res) => {
 
     pool.query("SELECT * FROM users where email=$1", [email])
         .then((result) => {
+            const user = result.rows[0];
             const passwordCorrect = bcrypt.compareSync(
                 password,
-                result.rows[0].password_hash
+                user.password_hash
             );
 
             if (passwordCorrect) {
+                req.session.user = user;
                 console.log("correct !");
             } else {
+                //TODO: add error notification
                 console.log("wrong");
             }
             res.render("home");
         })
         .catch((err) => console.log(err));
+});
+
+//user logout
+userRouter.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
 });
 
 export default userRouter;

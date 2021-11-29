@@ -8,36 +8,15 @@
   <title>Document</title>
 
   <style>
-    #markdown>pre {
-      background-color: beige;
-      width: auto;
-      padding: 1rem;
-      border-radius: 5px;
-
-    }
-
-    #editor-container {
-      border: black 1px solid;
-      width: auto;
-    }
   </style>
-  <link href='calendar/main.css' rel='stylesheet' />
-  <script src='calendar/main.js'></script>
+  <link rel="stylesheet" href="./styles/styles.css">
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-      });
-      calendar.render();
-    });
   </script>
 
 </head>
 
 <body>
-  <div id='calendar'></div>
-
+  <%- include('./common/navbar', {navbar: null}) %>
 </body>
 
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+  </style>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <script>
+  </script>
+
+</head>
+
+<body class="bg-gray-100">
+  <%- include('../common/navbar', {navbar: "collections" }) %>
+    <div class="container pt-16">
+      <div class="grid grid-cols-3 gap-4">
+        <% collections.forEach(collection=> { %>
+          <%- include('./collection-card', {collection}) %>
+            <% }) %>
+      </div>
+      <%- include('../common/footer',) %>
+    </div>
+</body>
+
+</html>

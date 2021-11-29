@@ -4,4 +4,10 @@ const logger = (req, res, next) => {
     next();
 };
 
-export default { logger };
+const checkUser = (req, res, next) => {
+    //check if user auth
+    console.log(req.session);
+    next();
+};
+
+export default { logger, checkUser };
