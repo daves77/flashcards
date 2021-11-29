@@ -16,4 +16,8 @@
     .container {
         @apply max-w-7xl m-auto;
     }
+
+    .tag {
+        @apply border-purple-100 flex m-2 items-center rounded text-purple-900 bg-blue-200 p-2;
+    }
 }

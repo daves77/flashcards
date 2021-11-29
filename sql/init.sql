@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS collections_tags (
 
 CREATE TABLE IF NOT EXISTS tags (
   id SERIAL PRIMARY KEY,
-  name TEXT
+  name TEXT UNIQUE
 );
 
 

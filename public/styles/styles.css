@@ -2037,6 +2037,20 @@ video {
   max-width: 80rem;
 }
 
+.tag {
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(237, 233, 254, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+  padding: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(76, 29, 149, var(--tw-text-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

@@ -1,5 +1,5 @@
 <nav class="bg-white shadow-lg">
-  <div class="max-w-7xl mx-auto px-4">
+  <div class="container px-4 md:px-0">
     <div class="flex justify-between">
       <div class="flex space-x-7">
         <div class="items-center">
@@ -9,7 +9,7 @@
         </div>
 
         <div class="hidden md:flex items-center space-x-1">
-          <a href="" class="py-4 px-2 
+          <a href="/collections" class="py-4 px-2 
           <% if (navbar === 'collections'){ %>
              border-b-4 border-purple-500 text-purple-500
           <% } else { %>
@@ -23,8 +23,11 @@
       <div class="hidden md:flex items-center space-x-3">
         <%= locals.user %>
           <% if (!(typeof user===undefined)){ %>
-            <a href="">
+            <a href="/signup">
               <button class="btn">Sign Up</button>
+            </a>
+            <a href="/login">
+              <button class="btn">Login</button>
             </a>
             <% } %>
       </div>
