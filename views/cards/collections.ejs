@@ -54,6 +54,9 @@
             Create Collection</button>
         </div>
       </div>
+      <div class="mt-4 font-bold text-sm">
+        Total Collections: <%= collections.length %>
+      </div>
       <div class="grid grid-cols-4 gap-4">
         <% collections.forEach(collection=> { %>
           <%- include('./collection-card', {collection}) %>

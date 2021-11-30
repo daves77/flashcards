@@ -55,7 +55,10 @@
           </a>
         </div>
       </div>
-      <div class="grid grid-cols-4 gap-4 mt-10">
+      <div class="mt-4 mb-4 font-bold text-sm">
+        Total Cards: <%= cards.length %>
+      </div>
+      <div class="grid grid-cols-4 gap-4">
         <% cards.forEach((card, index)=> { %>
           <a href="/collections/card/view/<%= card.cards_id %> ">
             <div class="p-4 bg-white rounded w-100 mb-2 border-b-2 border-transparent hover:border-purple-700">
