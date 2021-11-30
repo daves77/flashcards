@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Create</title>
+  <title>View</title>
   <link rel="stylesheet" href="/styles/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@2.6.2/dist/bundle.min.js"></script>
@@ -20,7 +20,6 @@
         <div class="rounded p-4 pl-8 shadow-lg w-screen mx-auto prose">
           <div>
             <div id="editorjs" class="mx-auto"></div>
-            <button id="save-btn" class="btn">Save</button>
           </div>
         </div>
       </div>
@@ -28,9 +27,9 @@
 
 
     <%- include('../common/footer') %>
+
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script type="module" src="/js/editor.mjs"></script>
-      <script type="module" src="/js/save-handler.js"></script>
+      <script type="module" src="/js/read-editor.mjs"></script>
 </body>
 
 </html>

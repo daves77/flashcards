@@ -32,5 +32,5 @@ CREATE TABLE IF NOT EXISTS collections_cards (
 CREATE TABLE IF NOT EXISTS cards (
   id SERIAL PRIMARY KEY,
   front TEXT,
-  back TEXT
+  content JSON
 );

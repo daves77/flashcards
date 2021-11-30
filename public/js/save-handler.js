@@ -9,12 +9,15 @@ const config = {
 };
 
 saveButton.addEventListener("click", () => {
-    editor.save().then((savedData) => {
+    editor.save().then(async (savedData) => {
         console.log(savedData);
-        axios.post(
-            "http://localhost:3001/cards/create",
+        const id = window.location.href.split("/")[4];
+        await axios.post(
+            `http://localhost:3001/collections/${id}/cards/create`,
             JSON.stringify(savedData.blocks),
             config
         );
+
+        window.history.back();
     });
 });

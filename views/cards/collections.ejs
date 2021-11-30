@@ -203,10 +203,12 @@
   })
 
   const createCollectionBtn = document.getElementById('create-collection')
-  createCollectionBtn.addEventListener('click', (e) => {
+  createCollectionBtn.addEventListener('click', async (e) => {
     const name = document.getElementById('name').value
     const description = document.getElementById('description').value
-    axios.post("http://localhost:3001/collections/create", { name, description, tags })
+    await axios.post("http://localhost:3001/collections/create", { name, description, tags })
+
+    location.reload()
   })
 </script>
 

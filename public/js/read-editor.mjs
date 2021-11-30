@@ -1,8 +1,13 @@
 const ImageTool = window.ImageTool;
 
+const id = window.location.href.split("/")[6];
+const response = await axios.get(
+    `http://localhost:3001/collections/cards/${id}`
+);
+
 export const editor = new EditorJS({
     holder: "editorjs",
-    placeholder: "New Note",
+    readOnly: true,
     tools: {
         header: {
             class: Header,
@@ -21,5 +26,9 @@ export const editor = new EditorJS({
             },
         },
         code: CodeTool,
+    },
+    data: {
+        time: new Date(),
+        blocks: response.data,
     },
 });

@@ -46,30 +46,55 @@ cardsRouter.post("/create", (req, res) => {
         });
 
         setTimeout(() => {
-            res.redirect("/collections");
-        }, 500);
+            res.redirect("back");
+        }, 0);
     });
 });
 
 //gets the cards from a collection
 cardsRouter.get("/:id", (req, res) => {
     const { id } = req.params;
+    pool.query(
+        "select collections_id, collections.name as collection_name, cards_id, cards.content from collections_cards inner join cards on cards_id=cards.id inner join collections on collections_id=collections.id where collections_id=$1",
+        [id]
+    ).then((result) => {
+        const cards = result.rows;
+        console.log(cards);
+        console.log(cards[0].content);
+        res.render("cards/card-list", { cards, id });
+    });
 });
 
-cardsRouter.get("/cards/create", (req, res) => {
+cardsRouter.get("/:id/cards/create", (req, res) => {
     res.render("cards/create-card");
 });
 
 // post request to create card
-cardsRouter.post("/cards/create", (req, res) => {
-    //receives the card information as a string.
-    //save card information as string
-    //create card in DB
-    // pool.query('INSERT INTO collections_card (front, back) ')
-    // console.log(req.body, "create card post");
+cardsRouter.post("/:id/cards/create", (req, res) => {
+    // receives the card information as a string.
+    // save card information as string
+    // create card in DB
+    const collectionId = req.params.id;
+    console.log(req.body);
+    pool.query("INSERT INTO cards (content) VALUES ($1) RETURNING *", [
+        JSON.stringify(req.body),
+    ])
+        .then((result) => {
+            const card = result.rows[0];
+            return pool.query(
+                "INSERT INTO collections_cards (collections_id, cards_id) VALUES ($1, $2)",
+                [collectionId, card.id]
+            );
+        })
+        .then((result) => {
+            res.status(301).redirect(`/collections/${collectionId}`);
+        })
+        .catch((err) => {
+            console.log(err.stack);
+        });
 });
 
-cardsRouter.post("/images", multerUpload.single("image"), (req, res) => {
+cardsRouter.post("/cards/images", multerUpload.single("image"), (req, res) => {
     console.log(req.file);
     const path = `/uploads/${req.file.filename}`;
     console.log(path);
@@ -81,13 +106,23 @@ cardsRouter.post("/images", multerUpload.single("image"), (req, res) => {
     });
 });
 
-cardsRouter.get("/view/:id", (req, res) => {
-    const { id } = req.params;
-    pool.query("SELECT * FROM cards")
+cardsRouter.get("/cards/:cardId", (req, res) => {
+    const { cardId } = req.params;
+
+    pool.query("select * from cards where id=$1", [cardId])
         .then((result) => {
-            console.log(result.rows[0]);
+            const card = result.rows[0];
+            const content = card.content;
+            console.log(JSON.stringify(content));
+
+            res.status(200).json(content);
         })
         .catch((err) => console.log(err));
+});
+
+cardsRouter.get("/:collectonId/view/:cardId", (req, res) => {
+    const { collectionId } = req.params;
+    res.render("cards/view-card");
 });
 
 export default cardsRouter;
