@@ -5,15 +5,17 @@ dotenv.config();
 
 const { Pool } = pg;
 
+let config;
+
 if (process.env.DATABASE_URL) {
-    const config = {
+    config = {
         connectionString: process.env.DATABASE_URL,
         ssl: {
             rejectUnauthroized: false,
         },
     };
 } else {
-    const config = {
+    config = {
         user: "david",
         host: "localhost",
         database: "flashcards",
