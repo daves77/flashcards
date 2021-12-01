@@ -30,7 +30,7 @@ userRouter.post("/signup", (req, res) => {
 
 // get login page
 userRouter.get("/login", (req, res) => {
-    res.render("users/login");
+    res.render("users/login", { user: null });
 });
 
 //post login form
@@ -53,7 +53,7 @@ userRouter.post("/login", (req, res) => {
                 //TODO: add error notification
                 console.log("wrong");
             }
-            res.render("home");
+            res.redirect("/collections");
         })
         .catch((err) => console.log(err));
 });
@@ -61,7 +61,7 @@ userRouter.post("/login", (req, res) => {
 //user logout
 userRouter.post("/logout", (req, res) => {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("/collections");
 });
 
 export default userRouter;

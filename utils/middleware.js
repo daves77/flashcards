@@ -6,7 +6,7 @@ const logger = (req, res, next) => {
 
 const checkUser = (req, res, next) => {
     //check if user auth
-    console.log(req.session);
+    console.log(req.session, "request session");
     next();
 };
 

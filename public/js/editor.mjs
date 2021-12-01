@@ -8,8 +8,8 @@ export const editor = new EditorJS({
             class: Header,
             config: {
                 placeholder: "Enter a Header",
-                levels: [2, 3, 4, 5, 6],
-                defaultLevel: 3,
+                levels: [1, 2, 3, 4, 5, 6],
+                defaultLevel: 1,
             },
         },
         image: {

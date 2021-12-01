@@ -24,7 +24,10 @@
             <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
           </svg>
           <h2 class="text-5xl font-semibold tracking-tight">
-            <%= cards[0].collection_name %>
+            <% if(cards.length> 0) { %>
+
+              <%= cards[0].collection_name %>
+                <% } %>
           </h2>
         </div>
       </div>

@@ -6,13 +6,17 @@ const cardsRouter = express.Router();
 
 //gets all collections
 cardsRouter.get("/", (req, res) => {
+    console.log(req.session.user, "session user");
     pool.query(
         "select c.id, c.name, c.description, array_agg(t.name) as tags from collections c left join collections_tags ct on c.id=ct.collection_id left join tags t on ct.tag_id = t.id group by c.id"
     )
         .then((result) => {
             const collections = result.rows;
 
-            res.render("cards/collections", { collections });
+            res.render("cards/collections", {
+                collections,
+                user: req.session.user,
+            });
             //TODO: get number of cards in a collection
         })
         .catch((err) => console.log(err));
@@ -59,14 +63,13 @@ cardsRouter.get("/:id", (req, res) => {
         [id]
     ).then((result) => {
         const cards = result.rows;
-        console.log(cards);
-        console.log(cards[0].content);
-        res.render("cards/card-list", { cards, id });
+
+        res.render("cards/card-list", { cards, id, user: req.session.user });
     });
 });
 
 cardsRouter.get("/:id/cards/create", (req, res) => {
-    res.render("cards/create-card");
+    res.render("cards/create-card", { user: req.session.user });
 });
 
 // post request to create card
@@ -122,7 +125,7 @@ cardsRouter.get("/cards/:cardId", (req, res) => {
 
 cardsRouter.get("/:collectonId/view/:cardId", (req, res) => {
     const { collectionId } = req.params;
-    res.render("cards/view-card");
+    res.render("cards/view-card", { user: req.session.user });
 });
 
 export default cardsRouter;

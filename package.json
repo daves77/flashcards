@@ -7,6 +7,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon index.js",
+        "start": "node index.js",
         "build:css": "postcss public/styles/tailwind.css -o public/styles/styles.css",
         "build:psql": "psql -d flashcards -f sql/init.sql",
         "seed:psql": "psql -d flashcards -f sql/seed.sql"
