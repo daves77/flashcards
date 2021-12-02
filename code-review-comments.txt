@@ -1,0 +1,11 @@
+Code Review comments from Michelle and Mike
+
+Good points
+- css looks really good, polished, and product ready!
+- nice that you explored modules not covered in the materieal: tailwind, express.Router, bcrypt 
+- folder and file structure is very organized. nice that cards, user, and home are separate.
+
+Points to Improve
+- minor issue in some routes: error case only has a console.log(), and no res.send()...
+- code is generally good and clean. Better to add more functionality to make it more useful. :D 
+  - next project can be more imaginative. :D 
